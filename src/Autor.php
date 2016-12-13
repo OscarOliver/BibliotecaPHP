@@ -14,8 +14,12 @@ class Autor
     private $telefon;
     private $pais;
 
-    function __construct()
+    function __construct($nom, $cognom, $email, $telefon, $pais)
     {
-
+        $this->nom = $nom;
+        $this->cognom = $cognom;
+        $this->pais = $pais;
+        $this->email = $email;
+        $this->telefon = $telefon;
     }
 }
