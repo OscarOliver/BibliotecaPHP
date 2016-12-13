@@ -42,11 +42,26 @@ class Usuari
 
         // Comprovar la connexió, si no pot connectar-se donara error
         if ($link === false) {
-            die("ERROR: No s'ha pogut connectar. ".mysqli_connect_error());
+            die("ERROR: No s'ha pogut connectar. " . mysqli_connect_error());
         }
         else {
-            echo "Connected successfully.";
+            echo "<script>console.log( 'Connected successfully.' );</script>";
         }
+
+        $sql = "INSERT INTO usuari VALUES (NULL, '" .
+                $this->nom . "', '" . $this->cognom . "', '" . $this->dni . "', '" .
+                $this->dataNaixement . "', '" . $this->telefon . "', '" . $this->email . "', '" .
+                $this->direccio . "', '" . $this->poblacio . "')";
+
+
+        if (mysqli_query($link, $sql)) {
+            $msg = "New record created successfully";
+        }
+        else {
+            $msg = "Error: " . $sql . "\n" . mysqli_error($link);
+        }
+        echo "<script>console.log( '" . $msg . "' );</script>";
+
         $link->close();
     }
 
