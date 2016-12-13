@@ -18,7 +18,6 @@ class Usuari
     private $email;
     private $telefon;
     private $dataNaixement;
-    private $dataNaixement2;
 
     function __construct($nom, $cognom, $dni, $direccio, $poblacio, $provincia, $pais,
                          $email, $telefon, $dataNaixement)
