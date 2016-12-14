@@ -26,6 +26,7 @@ echo    "<th>Id</th>";
 echo    "<th>Nom</th>";
 echo    "<th>Cognoms</th>";
 echo    "<th>Data naixement</th>";
+echo    "<th>Pais</th>";
 echo "</tr></thead>";
 echo "<tbody>";
 while ($row = $results->fetch_array()) {
@@ -34,6 +35,7 @@ while ($row = $results->fetch_array()) {
     echo "<td>" . $row['nom'] . "</td>";
     echo "<td>" . $row['cognom'] . "</td>";
     echo "<td>" . $row['dataNaixement'] . "</td>";
+    echo "<td>" . $row['nacionalitat'] . "</td>";
     echo "</tr>";
 }
 echo "</tbody></table>";
