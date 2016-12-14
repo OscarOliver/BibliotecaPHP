@@ -51,7 +51,7 @@ class Usuari
         $sql = "INSERT INTO usuari VALUES (NULL, '" .
                 $this->nom . "', '" . $this->cognom . "', '" . $this->dni . "', '" .
                 $this->dataNaixement . "', '" . $this->telefon . "', '" . $this->email . "', '" .
-                $this->direccio . "', '" . $this->poblacio . "')";
+                $this->direccio . "', '" . $this->poblacio . "', '" . $this->provincia . "', '" . $this->pais . "')";
 
 
         if (mysqli_query($link, $sql)) {
