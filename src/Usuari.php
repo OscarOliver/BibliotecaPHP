@@ -6,6 +6,9 @@
  * Date: 13/12/16
  * Time: 15:53
  */
+
+require_once ("DBConnection.php");
+
 class Usuari
 {
     private $nom;
@@ -14,12 +17,12 @@ class Usuari
     private $direccio;
     private $poblacio;
     private $provincia;
-    private $pais;
+    private $nacionalitat;
     private $email;
     private $telefon;
     private $dataNaixement;
 
-    function __construct($nom, $cognom, $dni, $direccio, $poblacio, $provincia, $pais,
+    function __construct($nom, $cognom, $dni, $direccio, $poblacio, $provincia, $nacionalitat,
                          $email, $telefon, $dataNaixement)
     {
         $this->nom = $nom;
@@ -28,7 +31,7 @@ class Usuari
         $this->direccio = $direccio;
         $this->poblacio = $poblacio;
         $this->provincia = $provincia;
-        $this->pais = $pais;
+        $this->nacionalitat = $nacionalitat;
         $this->email = $email;
         $this->telefon = $telefon;
         $this->dataNaixement = $dataNaixement;
@@ -37,8 +40,7 @@ class Usuari
     public function guardar()
     {
         /* Connexió a la bd */
-        //$link = DBConnection::getConnection();
-        $link = mysqli_connect("hl344.dinaserver.com", "alumne", "alumne", "m7biblioteca");
+        $link = DBConnection::getConnection();
 
         // Comprovar la connexió, si no pot connectar-se donara error
         if ($link === false) {
@@ -51,7 +53,7 @@ class Usuari
         $sql = "INSERT INTO usuari VALUES (NULL, '" .
                 $this->nom . "', '" . $this->cognom . "', '" . $this->dni . "', '" .
                 $this->dataNaixement . "', '" . $this->telefon . "', '" . $this->email . "', '" .
-                $this->direccio . "', '" . $this->poblacio . "', '" . $this->pais . "', '" . $this->provincia . "')";
+                $this->direccio . "', '" . $this->poblacio . "', '" . $this->nacionalitat . "', '" . $this->provincia . "')";
 
 
         if (mysqli_query($link, $sql)) {
@@ -168,15 +170,15 @@ class Usuari
     /**
      * @return mixed
      */
-    public function getPais()
+    public function getNacionalitat()
     {
         return $this->pais;
     }
 
     /**
-     * @param mixed $pais
+     * @param mixed $nacionalitat
      */
-    public function setPais($pais)
+    public function setNacionalitat($pais)
     {
         $this->pais = $pais;
     }
