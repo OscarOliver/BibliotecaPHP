@@ -8,6 +8,6 @@
 <header>
     <nav>
         <a href="index.php">Home</a>
-        <a href="">Cataleg</a>
+        <a href="mostrarCataleg.php">Cataleg</a>
     </nav>
 </header>
