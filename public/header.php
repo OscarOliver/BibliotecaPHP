@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Biblioteca</title>
+    <script src="js/global.js"></script>
 </head>
 <body>
 <header>

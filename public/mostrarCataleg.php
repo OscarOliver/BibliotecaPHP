@@ -2,6 +2,7 @@
 include "header.php";
 require_once "../src/Cataleg.php";
 require_once "../src/Prestecs.php";
+require_once "../src/Llibre.php";
 
 $results = Cataleg::get();
 $resultsPrestecs = Prestecs::getRetornar();
@@ -21,7 +22,7 @@ while ($row = $results->fetch_array()){
 echo "<form action='prestarLlibre.php' method='post' autocomplete='off'>";
 echo "<label>Llibres disponibles</label>";
 echo "<br />";
-echo "<input list='disponibles' name='idCataleg' placeholder='Escriu el id del cataleg'>";
+echo "<input list='disponibles' name='idCataleg' placeholder='Escriu el id del cataleg' onchange='descripcio(this.value)'>";
 echo "<datalist id='disponibles'>";
 for ($x = 0; $x < count($arrPrestar); $x++){
     if(array_search($arrPrestar[$x],$arrTornar) === false){
@@ -47,3 +48,11 @@ echo "</datalist>";
 echo "</input>";
 echo "<input type='submit' value='Tornar'>";
 echo "</form>";
+?>
+<!--/*Descripció llibres Prestec*/-->
+<div class="desc">
+    <p><b>Informació dels llibres</b></p>
+    <h4>Titol del llibre: <span style="color: red; font-weight: bold" id="titolLlibre"></span> </h4>
+
+</div>
+
