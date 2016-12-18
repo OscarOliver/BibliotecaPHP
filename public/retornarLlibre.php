@@ -8,5 +8,5 @@
 
 require_once "../src/Prestecs.php";
 
-$prestecs = new Prestecs();
-$prestecs->retornar($_POST['idCataleg']);
+Prestecs::retornar($_POST['idCataleg']);
+header('Location: mostrarCataleg.php');

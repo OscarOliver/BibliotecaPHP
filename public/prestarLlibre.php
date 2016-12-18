@@ -34,4 +34,5 @@ if(sizeof($_POST) > 1){
 
     /*Realitzem el prestec*/
     Prestecs::prestar($usuari,$id);
+    header('Location: mostrarCataleg.php');
 }

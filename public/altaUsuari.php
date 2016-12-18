@@ -11,3 +11,4 @@ $usuari = new Usuari($_POST['nom'], $_POST['cognoms'], $_POST['dni'], $_POST['di
 
 echo "<script>console.log('Object usuari created. Attempting to save to DB...')</script>";
 $usuari->guardar();
+header('Location: mostrarusuaris.php');
