@@ -1,13 +1,20 @@
 <?php
+include "header.php";
 require_once "../src/Cataleg.php";
 require_once "../src/Prestecs.php";
 
-$cataleg = new Cataleg();
-$prestecs = new Prestecs();
+$results = Cataleg::get();
+$resultsPrestecs = Prestecs::getRetornar();
+$arrTornar = array();
+$arrPrestar = array();
 
-$results = $cataleg ->get();
-$resultsPrestecs = $prestecs ->get();
+while ($rowPrestecs = $resultsPrestecs->fetch_array()){
+    array_push($arrTornar,$rowPrestecs['idCataleg']);
+}
 
+while ($row = $results->fetch_array()){
+    array_push($arrPrestar,$row['id']);
+}
 
 /*Llista de llibres per Prestar*/
 
@@ -16,18 +23,14 @@ echo "<label>Llibres disponibles</label>";
 echo "<br />";
 echo "<input list='disponibles' name='idCataleg' placeholder='Escriu el id del cataleg'>";
 echo "<datalist id='disponibles'>";
-while ($row = $results->fetch_array()){
-$idCataleg = $row['id'];
-$disponible = true;
-    while ($rowPrestecs = $resultsPrestecs->fetch_array()){
-        if($rowPrestecs['idCataleg'] == $idCataleg && $rowPrestecs['dataDevolucio'] == null) $disponible = false;
+for ($x = 0; $x < count($arrPrestar); $x++){
+    if(array_search($arrPrestar[$x],$arrTornar) === false){
+        echo '<option value="'.$arrPrestar[$x].'">';
     }
-
-    if($disponible)echo '<option value="'.$row[id].'">';
 }
 echo "</datalist>";
 echo "</input>";
-echo "<input type='submit'>";
+echo "<input type='submit' value='Prestar'>";
 echo "</form>";
 
 /*Llista de llibres per retornar*/
@@ -37,13 +40,10 @@ echo "<label>Llibres a retornar</label>";
 echo "<br />";
 echo "<input list='retornar' name='idCataleg' placeholder='Escriu el id del cataleg'>";
 echo "<datalist id='retornar'>";
-while ($rowPrestecs = $resultsPrestecs->fetch_array()){
-    $idCataleg = $rowPrestecs['idCataleg'];
-    $valid = false;
-    if($rowPrestecs['dataDevolucio'] == null)$valid = true;
-    if ($valid) echo "<option value = '.$rowPrestecs[idCataleg].'>";
+for ($x = 0; $x < count($arrTornar); $x++){
+    echo '<option value="'.$arrTornar[$x].'">';
 }
 echo "</datalist>";
 echo "</input>";
-echo "<input type='submit'>";
+echo "<input type='submit' value='Tornar'>";
 echo "</form>";
