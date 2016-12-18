@@ -67,6 +67,22 @@ class Usuari
         $link->close();
     }
 
+    static function getUsuaris(){
+        /* Connexió a la bd */
+        $link = DBConnection::getConnection();
+
+        // Comprovar la connexió, si no pot connectar-se donara error
+        if ($link === false) {
+            die("ERROR: No s'ha pogut connectar. " . mysqli_connect_error());
+        }
+        else {
+            echo "<script>console.log( 'Connected successfully.' );</script>";
+        }
+
+        $sql = "select * from usuari";
+        $res = mysqli_query($link,$sql);
+        return $res;
+    }
     /********************************
      * Getters & Setters
      ********************************/
