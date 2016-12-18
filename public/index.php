@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
+<?php include "header.php"; ?>
 <table width="85%">
     <tr><td><h1>Biblioteca</h1></td></tr>
     <tr>
