@@ -1,6 +1,6 @@
 <?php include "header.php"; ?>
 
-<div class="main">
+<div class="catalegBody">
 
 <?php
 require_once "../src/Cataleg.php";
@@ -28,6 +28,7 @@ while ($row = $results->fetch_array()){
     array_push($arrPrestar,$row['id']);
 }
 
+echo "<div class = 'formularis'>";
 /*Llista de llibres per Prestar*/
 
 echo "<form action='prestarLlibre.php' method='post' autocomplete='off'>";

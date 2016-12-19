@@ -25,6 +25,11 @@ tr:nth-child(even) td{
     color: white;
 }
 
+tr:nth-child(odd) td{
+    background: #ff7a64;
+    color: white;
+}
+
 td{
     padding: 10px;
 }
@@ -37,8 +42,16 @@ th{
 
 /*Mostrar Cataleg */
 
-div.main >   table#infoPrestats{
+div.catalegBody >   table#infoPrestats{
     margin:0 auto;
+}
+
+.catalegBody form{
+    display: inline-block;
+}
+
+.formularis{
+    text-align: center;
 }
 
 /*Index*/
