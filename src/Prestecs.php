@@ -71,4 +71,19 @@ class Prestecs
         $res =mysqli_query($link,$sql);
         $link->close();
     }
+
+    static function resumPrestecs(){
+        $link = DBConnection::getConnection();
+
+        if ($link === false) {
+            die("ERROR: No s'ha pogut connectar. " . mysqli_connect_error());
+        }
+        else {
+            echo "<script>console.log( 'Connected successfully.' );</script>";
+        }
+        $sql = "SELECT l.titol, u.nom, u.dni, p.idCataleg,p.dataPrestec from prestecs p JOIN cataleg c on c.id = p.idCataleg JOIN usuari u ON u.id = p.idUsuari JOIN llibre l ON l.id = c.idLlibre WHERE p.dataDevolucio IS NULL";
+        $res =mysqli_query($link,$sql);
+        $link->close();
+        return $res;
+    }
 }

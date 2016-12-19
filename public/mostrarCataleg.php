@@ -1,9 +1,20 @@
+<?php include "header.php"; ?>
+
+<div class="main">
+
 <?php
-include "header.php";
 require_once "../src/Cataleg.php";
 require_once "../src/Prestecs.php";
 require_once "../src/Llibre.php";
 
+/*Taula prestats*/
+echo "<table id='infoPrestats'>";
+echo "<tr><th>Llibre</th><th>Usuari</th><th>DNI</th><th>Num. Cataleg</th><th>Data de lloguer</th></tr>";
+$resTaula = Prestecs::resumPrestecs();
+while ($row = $resTaula->fetch_array()){
+    echo "<tr><td>".$row['titol']."</td><td>".$row['nom']."</td><td>".$row['dni']."</td><td>".$row['idCataleg']."</td><td>".$row['dataPrestec']."</td></tr>";
+}
+echo "</table>";
 $results = Cataleg::get();
 $resultsPrestecs = Prestecs::getRetornar();
 $arrTornar = array();
@@ -39,7 +50,7 @@ echo "</form>";
 echo "<form action='retornarLlibre.php' method='post' autocomplete='off'>";
 echo "<label>Llibres a retornar</label>";
 echo "<br />";
-echo "<input list='retornar' name='idCataleg' placeholder='Escriu el id del cataleg'>";
+echo "<input list='retornar' name='idCataleg' placeholder='Escriu el id del cataleg' onchange='descripcio(this.value)'>";
 echo "<datalist id='retornar'>";
 for ($x = 0; $x < count($arrTornar); $x++){
     echo '<option value="'.$arrTornar[$x].'">';
@@ -49,6 +60,7 @@ echo "</input>";
 echo "<input type='submit' value='Tornar'>";
 echo "</form>";
 ?>
+</div>
 <!--/*Descripció llibres Prestec*/-->
 <div class="desc">
     <p><b>Informació dels llibres</b></p>

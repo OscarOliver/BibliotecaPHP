@@ -5,7 +5,6 @@
  * Date: 14/12/16
  * Time: 20:45
  */
-include "header.php";
 require_once ("../src/DBConnection.php");
 $link = DBConnection::getConnection();
 
