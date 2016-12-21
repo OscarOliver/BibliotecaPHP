@@ -29,7 +29,7 @@ while ($row = $results->fetch_array()){
 }
 
 echo "<div class = 'formularis'>";
-/*Llista de llibres per Prestar*/
+/*Llista de llibres per Prestar */
 
 echo "<form action='prestarLlibre.php' method='post' autocomplete='off'>";
 echo "<label>Llibres disponibles</label>";

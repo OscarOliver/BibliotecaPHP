@@ -72,6 +72,29 @@ class Prestecs
         $link->close();
     }
 
+
+    static function getUsuarisLimit(){
+        $link = DBConnection::getConnection();
+
+        if ($link === false) {
+            die("ERROR: No s'ha pogut connectar. " . mysqli_connect_error());
+        }
+        else {
+            echo "<script>console.log( 'Connected successfully.' );</script>";
+        }
+
+        $sql = "SELECT idUsuari FROM prestecs WHERE dataDevolucio is NULL GROUP BY idUsuari HAVING count(*) >= 3";
+        $res = mysqli_query($link,$sql);
+        $link -> close();
+        $arrUsers = array();
+        while ($row = $res ->fetch_array()){
+            $id = $row[idUsuari];
+            array_push($arrUsers, $id);
+        }
+
+        return $arrUsers;
+    }
+
     static function resumPrestecs(){
         $link = DBConnection::getConnection();
 
