@@ -46,18 +46,15 @@
     $link->close();
     ?>
     </div>
-    <!--<div>
-        <a href="formulariNouUsuari.php"><button value="Afegir usuari">Afegir usuari</button></a>
-    </div>-->
 
-    <button onclick="document.getElementById('newUser').style.display='block'" style="width:auto;">Afegir usuari</button>
+    <button onclick="document.getElementById('newUserModal').style.display='block'" style="width:auto;">Afegir usuari</button>
 
-    <div id="newUser" class="modal">
+    <div id="newUserModal" class="modal">
 
         <form class="modal-content animate" action="altaUsuari.php" method="post" accept-charset="UTF-8">
             <div class="imgcontainer">
-                <span onclick="document.getElementById('newUser').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                <span onclick="document.getElementById('newUserModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="img/add-user.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
@@ -95,14 +92,14 @@
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('newUser').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="button" onclick="document.getElementById('newUserModal').style.display='none'" class="cancelbtn">Cancel</button>
             </div>
         </form>
     </div>
 
     <script>
         // Get the modal
-        var modal = document.getElementById('newUser');
+        var modal = document.getElementById('newUserModal');
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
