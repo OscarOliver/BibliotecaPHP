@@ -34,7 +34,7 @@ echo "<div class = 'formularis'>";
 echo "<form action='prestarLlibre.php' method='post' autocomplete='off'>";
 echo "<label>Llibres disponibles</label>";
 echo "<br />";
-echo "<input list='disponibles' name='idCataleg' placeholder='Escriu el id del cataleg'>";
+echo "<input list='disponibles' name='idCataleg' placeholder='Escriu el id del cataleg' onchange='descripcio(this.value)'>";
 echo "<datalist id='disponibles'>";
 for ($x = 0; $x < count($arrPrestar); $x++){
     if(array_search($arrPrestar[$x],$arrTornar) === false){
