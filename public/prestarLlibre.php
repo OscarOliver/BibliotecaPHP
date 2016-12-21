@@ -12,16 +12,20 @@ require_once "../src/Prestecs.php";
 
 $id = $_POST['idCataleg'];
 $idLlibre = Cataleg::getLlibre($id);
-$idLlibre = $idLlibre[idLlibre];
+
+$idLlibre = $idLlibre['idLlibre'];
 $usuaris = Usuari::getUsuaris();
+$invalidUsers = Prestecs::getUsuarisLimit();
 
 /*Llistat de usuaris*/
-echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>
+echo "<form action='prestarLlibre.php' method='post'>
 <input type='hidden' name='idCataleg' value='".$id."'>
 <input list='usuaris' name='usuari'>
 <datalist id='usuaris'>";
 while ($row = $usuaris ->fetch_array()){
-    echo "<option value='".$row[nom]." ".$row[cognom]."  (".$row[id].")"."'>";
+    if (array_search($row['id'],$invalidUsers) === false){
+        echo "<option value='".$row['nom']." ".$row['cognom']."  (".$row['id'].")"."'>";
+    }
 }
 echo "</datalist>
 </input>
