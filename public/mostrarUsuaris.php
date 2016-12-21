@@ -46,3 +46,8 @@
     $link->close();
     ?>
     </div>
+    <div>
+        <a href="formulariNouUsuari.php"><button value="Afegir usuari">Afegir usuari</button></a>
+    </div>
+
+<?php include "footer.php"; ?>

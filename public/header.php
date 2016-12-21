@@ -12,7 +12,7 @@
         <a href="index.php">Home</a>
         <a href="mostrarCataleg.php">Prestecs i Devolucions</a>
         <a href="#">Llibres</a>
-        <a href="#">Usuaris</a>
+        <a href="mostrarUsuaris.php">Usuaris</a>
 
     </nav>
 </header>
