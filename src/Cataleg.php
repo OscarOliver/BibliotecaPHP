@@ -39,6 +39,6 @@ class Cataleg
         $res = mysqli_query($link,$sql);
         $link -> close();
         $idLlibre = $res->fetch_array();
-        return $idLlibre;
+        return $idLlibre[idLlibre];
     }
 }

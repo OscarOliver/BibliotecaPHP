@@ -1,0 +1,66 @@
+nav a{
+    text-decoration: none;
+    display: inline-block;
+    padding:10px;
+    color: black;
+}
+
+nav a:hover{
+    color: #ff2f31;
+}
+
+nav{
+    border-bottom: 2px solid #ff2f31;
+}
+
+header{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+tr:nth-child(even) td{
+    background: #9c1b1b;
+    color: white;
+}
+
+tr:nth-child(odd) td{
+    background: #ff7a64;
+    color: white;
+}
+
+td{
+    padding: 10px;
+}
+
+th{
+    padding: 10px;
+    background: #ff2f31;
+    color: white;
+}
+
+/*Mostrar Cataleg */
+
+div.catalegBody >   table#infoPrestats{
+    margin:0 auto;
+}
+
+.catalegBody form{
+    display: inline-block;
+}
+
+.formularis{
+    text-align: center;
+}
+
+/*Index*/
+#llistaUsuaris table{
+    margin:0 auto;
+}
+
+
+/*Header*/
+h1.index{
+    text-align: center;
+}
