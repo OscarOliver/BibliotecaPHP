@@ -1,6 +1,8 @@
 <?php include "header.php"; ?>
-<h1 class="index">Biblioteca</h1>
 
+<div id="content">
+
+</div>
 
 
 <?php include "footer.php"; ?>

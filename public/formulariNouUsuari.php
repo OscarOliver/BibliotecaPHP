@@ -17,9 +17,9 @@
     <br>
     <input type="text" name="telefon" placeholder="Telefon">
     <br>
-    <input type="text" name="direccio" placeholder="Direccio">
+    <input type="text" name="direccio" placeholder="Direcció">
     <br>
-    <input type="text" name="poblacio" placeholder="Poblaci">
+    <input type="text" name="poblacio" placeholder="Població">
     <br>
     <input type="text" name="provincia" placeholder="Provincia">
     <br>
@@ -39,5 +39,5 @@
     <br><br>
     <input type="submit" value="Afegir">
 </form>
-</body>
-</html>
+
+<?php include "footer.php"; ?>

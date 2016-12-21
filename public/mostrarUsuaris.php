@@ -46,8 +46,70 @@
     $link->close();
     ?>
     </div>
-    <div>
+    <!--<div>
         <a href="formulariNouUsuari.php"><button value="Afegir usuari">Afegir usuari</button></a>
+    </div>-->
+
+    <button onclick="document.getElementById('newUser').style.display='block'" style="width:auto;">Afegir usuari</button>
+
+    <div id="newUser" class="modal">
+
+        <form class="modal-content animate" action="altaUsuari.php" method="post" accept-charset="UTF-8">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('newUser').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="img_avatar2.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <input type="text" name="nom" placeholder="Nom" required>
+                <br>
+                <input type="text" name="cognoms" placeholder="Cognoms" required>
+                <br>
+                <input type="text" name="dni" placeholder="DNI" required>
+                <br>
+                <input type="email" name="email" placeholder="Email">
+                <br>
+                <input type="text" name="telefon" placeholder="Telefon">
+                <br>
+                <input type="text" name="direccio" placeholder="Direcció">
+                <br>
+                <input type="text" name="poblacio" placeholder="Població">
+                <br>
+                <input type="text" name="provincia" placeholder="Provincia">
+                <br>
+                <input list="paisos" name="pais" placeholder="Pais">
+                <datalist id="paisos">
+                    <option value="Espanya">
+                    <option value="França">
+                    <option value="Portugal">
+                    <option value="Andorra">
+                    <option value="Italia">
+                    <option value="Alemania">
+                    <option value="Regne Unit">
+                    <option value="Estats Units d'America">
+                </datalist>
+                <br>
+                <input type="date" name="dataNaixement" placeholder="Data naixement">
+
+                <button type="submit">Afegir</button>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('newUser').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+        </form>
     </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('newUser');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 <?php include "footer.php"; ?>
