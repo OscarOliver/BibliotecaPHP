@@ -1,4 +1,4 @@
-<div id="newLlibreModal" class="modal">
+    <div id="newLlibreModal" class="modal">
 
         <form class="modal-content animate" action="actionPages/altaLlibre.php" method="post" accept-charset="UTF-8">
             <div class="imgcontainer">
@@ -7,37 +7,34 @@
             </div>
 
             <div class="container">
-                <input type="number" name="idAutor" placeholder="Id autor" required>
+                <?php
+                require_once "../src/Llibre.php";
+                require_once "../src/Autor.php";
+                $res = Llibre::resumLlibre();
+                $autorRes = Autor::get();
+                echo "<select title='autors' required>";
+                while ($row = $autorRes ->fetch_array()) {
+                    echo "<option>".$row['nom']." ".$row['cognom']."</option>";
+                };
+                echo "</select>";
+                ?>
                 <br>
-                <input type="number" min="1" name="numEdicio" placeholder="Num. Edicio" required>
+                <input type="text" name="titol" placeholder="Titol*" required>
                 <br>
-                <input type="number" min="1" name="quantitat" placeholder="Quantitat">
+                <input type="text" name="genere" placeholder="Genere*" required>
                 <br>
-                <input type="text" name="llocPublicacio" placeholder="Lloc publicacio">
+                <input type="number" min="1" name="quantitat" placeholder="Quantitat*" required>
                 <br>
-                <input type="number" min="1" name="anyEdicio" placeholder="Any edicio">
+                <input type="text" name="isbn" placeholder="ISBN*" required>
                 <br>
                 <input type="text" name="editorial" placeholder="Editorial">
                 <br>
-                <input type="text" name="isbn" placeholder="ISBN">
+                <input type="number" min="1" name="numEdicio" placeholder="Num. Edicio">
                 <br>
-                <input type="text" name="titol" placeholder="Titol">
+                <input type="number" min="1" name="anyEdicio" placeholder="Any edicio">
                 <br>
-                <input type="text" name="genere" placeholder="Genere">
+                <input type="text" name="llocPublicacio" placeholder="Lloc publicacio">
                 <br>
-                <!--
-                <input list="paisos" name="pais" placeholder="Pais">
-                <datalist id="paisos">
-                    <option value="Espanya">
-                    <option value="França">
-                    <option value="Portugal">
-                    <option value="Andorra">
-                    <option value="Italia">
-                    <option value="Alemania">
-                    <option value="Regne Unit">
-                    <option value="Estats Units America">
-                </datalist>
-                -->
                 <button type="submit">Afegir</button>
             </div>
 
