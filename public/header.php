@@ -5,6 +5,7 @@
     <title>Biblioteca</title>
     <script src="js/global.js"></script>
     <link rel="stylesheet" type="text/css" href="css/estil.css">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 </head>
 <body>
 <header>
@@ -13,8 +14,8 @@
         <a href="index.php">Home</a>
         <a href="mostrarCataleg.php">Prestecs i Devolucions</a>
         <a href="mostrarLlibres.php">Llibres</a>
+        <a href="mostrarLlibres2.php">Llibres2</a>
         <a href="mostrarUsuaris.php">Usuaris</a>
         <a href="mostrarAutors.php">Autors</a>
-
     </nav>
 </header>

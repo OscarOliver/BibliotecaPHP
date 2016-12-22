@@ -6,7 +6,7 @@
  * Time: 0:25
  */
 
-require_once "../src/Prestecs.php";
+require_once "../../src/Prestecs.php";
 
 Prestecs::retornar($_POST['idCataleg']);
-header('Location: mostrarCataleg.php');
+header('Location: ../mostrarCataleg.php');

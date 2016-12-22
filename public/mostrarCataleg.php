@@ -31,7 +31,7 @@ while ($row = $results->fetch_array()){
 echo "<div class = 'formularis'>";
 /*Llista de llibres per Prestar */
 
-echo "<form action='prestarLlibre.php' method='post' autocomplete='off'>";
+echo "<form action='actionPages/prestarLlibre.php' method='post' autocomplete='off'>";
 echo "<label>Llibres disponibles</label>";
 echo "<br />";
 echo "<input list='disponibles' name='idCataleg' placeholder='Escriu el id del cataleg' onchange='descripcio(this.value)'>";
@@ -48,7 +48,7 @@ echo "</form>";
 
 /*Llista de llibres per retornar*/
 
-echo "<form action='retornarLlibre.php' method='post' autocomplete='off'>";
+echo "<form action='actionPages/retornarLlibre.php' method='post' autocomplete='off'>";
 echo "<label>Llibres a retornar</label>";
 echo "<br />";
 echo "<input list='retornar' name='idCataleg' placeholder='Escriu el id del cataleg' onchange='descripcio(this.value)'>";
