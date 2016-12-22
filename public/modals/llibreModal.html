@@ -1,20 +1,31 @@
 <div id="newLlibreModal" class="modal">
 
-        <form class="modal-content animate" action="altaLlibre.php" method="post" accept-charset="UTF-8">
+        <form class="modal-content animate" action="actionPages/altaLlibre.php" method="post" accept-charset="UTF-8">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('newLlibreModal').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <img src="img/add-book.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
-                <input type="text" name="nom" placeholder="Nom" required>
+                <input type="number" name="idAutor" placeholder="Id autor" required>
                 <br>
-                <input type="text" name="cognoms" placeholder="Cognoms" required>
+                <input type="number" min="1" name="numEdicio" placeholder="Num. Edicio" required>
                 <br>
-                <input type="email" name="email" placeholder="Email">
+                <input type="number" min="1" name="quantitat" placeholder="Quantitat">
                 <br>
-                <input type="text" name="telefon" placeholder="Telefon">
+                <input type="text" name="llocPublicacio" placeholder="Lloc publicacio">
                 <br>
+                <input type="number" min="1" name="anyEdicio" placeholder="Any edicio">
+                <br>
+                <input type="text" name="editorial" placeholder="Editorial">
+                <br>
+                <input type="text" name="isbn" placeholder="ISBN">
+                <br>
+                <input type="text" name="titol" placeholder="Titol">
+                <br>
+                <input type="text" name="genere" placeholder="Genere">
+                <br>
+                <!--
                 <input list="paisos" name="pais" placeholder="Pais">
                 <datalist id="paisos">
                     <option value="Espanya">
@@ -26,7 +37,7 @@
                     <option value="Regne Unit">
                     <option value="Estats Units America">
                 </datalist>
-
+                -->
                 <button type="submit">Afegir</button>
             </div>
 

@@ -58,6 +58,6 @@
 
     <button onclick="document.getElementById('newLlibreModal').style.display='block'" style="width:auto;">Afegir llibre</button>
 
-    <?php include "modals/llibreModal.php"; ?>
+    <?php include "modals/llibreModal.html"; ?>
 
 <?php include "footer.php"; ?>

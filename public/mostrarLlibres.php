@@ -21,7 +21,7 @@ echo "<table id='infoLlibres' class='center'>";
     </tr>";
     }
     echo "
-<form action='nouLlibre.php'>
+<form action='actionPages/altaLlibre.php'>
     <tr>
         <td><input type='text' name='titol' placeholder='Titol' required></td>
         <td>
