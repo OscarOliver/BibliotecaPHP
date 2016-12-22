@@ -1,4 +1,4 @@
-<div id="newLlibreModal" class="modal">
+    <div id="newLlibreModal" class="modal">
 
         <form class="modal-content animate" action="actionPages/altaLlibre.php" method="post" accept-charset="UTF-8">
             <div class="imgcontainer">
@@ -7,6 +7,17 @@
             </div>
 
             <div class="container">
+                <?php
+                require_once "../src/Llibre.php";
+                require_once "../src/Autor.php";
+                $res = Llibre::resumLlibre();
+                $autorRes = Autor::get();
+                echo "<select title='autors' required>";
+                while ($row = $autorRes ->fetch_array()) {
+                    echo "<option>".$row['nom']." ".$row['cognom']."</option>";
+                };
+                echo "</select>";
+                ?>
                 <input type="number" name="idAutor" placeholder="Id autor" required>
                 <br>
                 <input type="number" min="1" name="numEdicio" placeholder="Num. Edicio" required>
