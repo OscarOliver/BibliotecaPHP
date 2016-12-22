@@ -14,6 +14,7 @@
         <a href="mostrarCataleg.php">Prestecs i Devolucions</a>
         <a href="#">Llibres</a>
         <a href="mostrarUsuaris.php">Usuaris</a>
+        <a href="mostrarAutors.php">Autors</a>
 
     </nav>
 </header>

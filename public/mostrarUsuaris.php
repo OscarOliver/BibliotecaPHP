@@ -83,7 +83,7 @@
                     <option value="Italia">
                     <option value="Alemania">
                     <option value="Regne Unit">
-                    <option value="Estats Units d'America">
+                    <option value="Estats Units America">
                 </datalist>
                 <br>
                 <input type="date" name="dataNaixement" placeholder="Data naixement">
