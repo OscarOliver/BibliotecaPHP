@@ -48,6 +48,64 @@ class Llibre
         $this->genere = $genere;
     }
 
+    static function get($id){
+        $link = DBConnection::getConnection();
+        $sql = "select * from llibre WHERE id = ".$id."";
+        $res = mysqli_query($link,$sql);
+        return $res;
+    }
+
+    static function resumLlibre(){
+        $link = DBConnection::getConnection();
+
+        if ($link === false) {
+            die("ERROR: No s'ha pogut connectar. " . mysqli_connect_error());
+        }
+        else {
+            echo "<script>console.log( 'Connected successfully.' );</script>";
+        }
+
+        $sql = "SELECT titol,a.nom, genere, ISBN, editorial,numEdicio,llocPublicacio,anyEdicio,quantitat  from llibre JOIN autor a ON a.id = llibre.idAutor ORDER BY titol";
+        if ($res = mysqli_query($link, $sql)) {
+            $msg = "New record created successfully";
+        }
+        else {
+            $msg = "Error: " . $sql . "\n" . mysqli_error($link);
+        }
+        echo "<script>console.log( '" . $msg . "' );</script>";
+        return $res;
+    }
+
+    public function guardar()
+    {
+        /* Connexió a la bd */
+        $link = DBConnection::getConnection();
+
+        // Comprovar la connexió, si no pot connectar-se donara error
+        if ($link === false) {
+            die("ERROR: No s'ha pogut connectar. " . mysqli_connect_error());
+        }
+        else {
+            echo "<script>console.log( 'Connected successfully.' );</script>";
+        }
+
+        $sql = "INSERT INTO llibre VALUES (NULL, '" .
+            $this->idAutor . "', '" . $this->numEdicio . "', '" . $this->quantitat . "', '" .
+            $this->llocPublicacio . "', '" . $this->anyEdicio . "', '" . $this->editorial . "', '" .
+            $this->isbn . "', '" . $this->titol . "', '" . $this->genere . "')";
+
+
+        if (mysqli_query($link, $sql)) {
+            $msg = "New record created successfully";
+        }
+        else {
+            $msg = "Error: " . $sql . "\n" . mysqli_error($link);
+        }
+        echo "<script>console.log( '" . $msg . "' );</script>";
+
+        $link->close();
+    }
+
     /**
      * @return mixed
      */
@@ -228,31 +286,5 @@ class Llibre
         return $this;
     }
 
-    static function get($id){
-        $link = DBConnection::getConnection();
-        $sql = "select * from llibre WHERE id = ".$id."";
-        $res = mysqli_query($link,$sql);
-        return $res;
-    }
 
-    static function resumLlibre(){
-        $link = DBConnection::getConnection();
-
-        if ($link === false) {
-            die("ERROR: No s'ha pogut connectar. " . mysqli_connect_error());
-        }
-        else {
-            echo "<script>console.log( 'Connected successfully.' );</script>";
-        }
-
-        $sql = "SELECT titol,a.nom, genere, ISBN, editorial,numEdicio,llocPublicacio,anyEdicio,quantitat  from llibre JOIN autor a ON a.id = llibre.idAutor ORDER BY titol";
-        if ($res = mysqli_query($link, $sql)) {
-            $msg = "New record created successfully";
-        }
-        else {
-            $msg = "Error: " . $sql . "\n" . mysqli_error($link);
-        }
-        echo "<script>console.log( '" . $msg . "' );</script>";
-        return $res;
-    }
 }
