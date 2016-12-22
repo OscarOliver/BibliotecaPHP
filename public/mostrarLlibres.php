@@ -21,24 +21,25 @@ echo "<table id='infoLlibres' class='center'>";
     </tr>";
     }
     echo "
-<form action=''>
+<form action='nouLlibre.php'>
     <tr>
-        <td><input type='text' name='titol' placeholder='Titol'></td>
+        <td><input type='text' name='titol' placeholder='Titol' required></td>
         <td>
-            <select title='Autors'>";
+            <select title='Autors' required>";
               while ($row = $autorRes ->fetch_array()){
                 echo "<option>".$row['nom']."</option>";
               };
             echo "</select>   
         </td>
-        <td><input type='text' name='genere' placeholder='Genere'></td>
-        <td><input type='text' name='isbn' placeholder='ISBN'></td>
-        <td><input type='text' name='editorial' placeholder='Editorial'></td>
-        <td><input type='number' name='numEdicio' placeholder='Num. edició'></td>
-        <td><input type='text' name='llocPublicacio' placeholder='Lloc publicació'></td>
-        <td><input type='number' name='anyEdicio' placeholder='Any de edició del llibre'></td>
-        <td><input type='number' name='Quantitat' placeholder='Any de publicació del llibre'></td>
+        <td><input type='text' name='genere' placeholder='Genere'required></td>
+        <td><input type='text' name='isbn' placeholder='ISBN'required></td>
+        <td><input type='text' name='editorial' placeholder='Editorial'required></td>
+        <td><input type='number' name='numEdicio' placeholder='Num. edició'required></td>
+        <td><input type='text' name='llocPublicacio' placeholder='Lloc publicació'required></td>
+        <td><input type='number' name='anyEdicio' placeholder='Any de edició del llibre'required></td>
+        <td><input type='number' name='Quantitat' placeholder='Any de publicació del llibre'required></td>
     </tr>
+    <tr><td colspan='9' style='background: white'><button class='llibre' type='submit'>Crear llibre</button></td></tr>
 </form>";
     echo "</table>";
  include "footer.php"; ?>

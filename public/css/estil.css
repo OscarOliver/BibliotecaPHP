@@ -70,6 +70,7 @@ h1.index{
 }
 
 
+
 /* Formularis */
 /* Full-width input fields */
 input[type=text], input[type=password], input[type=email], input[type=date], input[list] {
@@ -83,7 +84,7 @@ input[type=text], input[type=password], input[type=email], input[type=date], inp
 
 /* Set a style for all buttons */
 button {
-    background-color: #4CAF50;
+    background-color: #FF2F31;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -181,3 +182,4 @@ span.psw {
         width: 100%;
     }
 }
+
