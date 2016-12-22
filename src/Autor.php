@@ -38,7 +38,7 @@ class Autor
             echo "<script>console.log( 'Connected successfully.' );</script>";
         }
 
-        $sql = "INSERT INTO usuari VALUES (NULL, '" .
+        $sql = "INSERT INTO autor VALUES (NULL, '" .
             $this->nom . "', '" . $this->cognom . "', '" .
             $this->telefon . "', '" . $this->email . "', '" .
             $this->nacionalitat . "')";
