@@ -26,18 +26,30 @@
     echo "<table>";
     echo "<thead><tr>";
     echo    "<th>Id</th>";
+    echo    "<th>DNI</th>";
     echo    "<th>Nom</th>";
     echo    "<th>Cognoms</th>";
     echo    "<th>Data naixement</th>";
-    echo    "<th>Pais</th>";
+    echo    "<th>Email</th>";
+    echo    "<th>Telefon</th>";
+    echo    "<th>Direcció</th>";
+    echo    "<th>Població</th>";
+    echo    "<th>Provincia</th>";
+    echo    "<th>Nacionalitat</th>";
     echo "</tr></thead>";
     echo "<tbody>";
     while ($row = $results->fetch_array()) {
         echo "<tr>";
         echo "<td>" . $row['id'] . "</td>";
+        echo "<td>" . $row['dni'] . "</td>";
         echo "<td>" . $row['nom'] . "</td>";
         echo "<td>" . $row['cognom'] . "</td>";
         echo "<td>" . $row['dataNaixement'] . "</td>";
+        echo "<td>" . $row['email'] . "</td>";
+        echo "<td>" . $row['telefon'] . "</td>";
+        echo "<td>" . $row['direccio'] . "</td>";
+        echo "<td>" . $row['poblacio'] . "</td>";
+        echo "<td>" . $row['provincia'] . "</td>";
         echo "<td>" . $row['nacionalitat'] . "</td>";
         echo "</tr>";
     }

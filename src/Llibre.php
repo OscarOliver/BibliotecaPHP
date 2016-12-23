@@ -50,7 +50,7 @@ class Llibre
 
     static function get($id){
         $link = DBConnection::getConnection();
-        $sql = "select * from llibre WHERE id = ".$id."";
+        $sql = "SELECT * FROM llibre WHERE id = ".$id;
         $res = mysqli_query($link,$sql);
         return $res;
     }
@@ -94,6 +94,7 @@ class Llibre
             $this->llocPublicacio . "', '" . $this->anyEdicio . "', '" . $this->editorial . "', '" .
             $this->isbn . "', '" . $this->titol . "', '" . $this->genere . "')";
 
+        echo "<script>console.log( '" . $sql . "' );</script>";
 
         if (mysqli_query($link, $sql)) {
             $msg = "New record created successfully";
