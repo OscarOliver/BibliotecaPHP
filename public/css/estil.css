@@ -66,9 +66,25 @@ th{
 
 /*Mostrar Cataleg */
 
-div.catalegBody >   table#infoPrestats{
-    margin:0 auto;
+div.catalegBody > div:first-child{
+    position: relative;
 }
+
+div.catalegBody > div:first-child > div.desc{
+    position: absolute;
+    bottom: -100px;
+    left:0;
+}
+div.catalegBody > div:first-child > *:not(script){
+    display: inline-block;
+}
+
+
+div.catalegBody > div:first-child > table{
+    display: inline-table;
+    width: 100%;
+}
+
 
 .catalegBody form{
     display: inline-block;

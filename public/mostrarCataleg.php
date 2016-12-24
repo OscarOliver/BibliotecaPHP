@@ -8,6 +8,13 @@ require_once "../src/Prestecs.php";
 require_once "../src/Llibre.php";
 
 /*Taula prestats*/
+echo "<div>";
+//<!--/*Descripció llibres Prestec*/-->
+echo '<div class="desc">
+    <p><b>Informació dels llibres</b></p>
+    <h4>Titol del llibre: <span style="color: red; font-weight: bold" id="titolLlibre"></span> </h4>
+
+</div>';
 echo "<table id='infoPrestats'>";
 echo "<tr><th>Llibre</th><th>Usuari</th><th>DNI</th><th>Num. Cataleg</th><th>Data de lloguer</th></tr>";
 $resTaula = Prestecs::resumPrestecs();
@@ -28,7 +35,7 @@ while ($row = $results->fetch_array()){
     array_push($arrPrestar,$row['id']);
 }
 
-echo "<div class = 'formularis'>";
+echo "</div><div class = 'formularis'>";
 /*Llista de llibres per Prestar */
 
 echo "<form action='actionPages/prestarLlibre.php' method='post' autocomplete='off'>";
@@ -62,12 +69,7 @@ echo "<input type='submit' value='Tornar'>";
 echo "</form>";
 ?>
 </div>
-<!--/*Descripció llibres Prestec*/-->
-<div class="desc">
-    <p><b>Informació dels llibres</b></p>
-    <h4>Titol del llibre: <span style="color: red; font-weight: bold" id="titolLlibre"></span> </h4>
 
-</div>
 </div>
 
 <?php include "footer.php"; ?>
