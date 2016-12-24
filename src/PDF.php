@@ -103,7 +103,38 @@ function booksReport($pdf) {
 }
 
 function userReport($pdf) {
+    $link = DBConnection::getConnection();
 
+// Comprovar la connexió, si no pot connectar-se donara error
+    if ($link === false) die("Die");
+
+    $sql1 = ' SELECT prestecs.idusuari, usuari.nom, usuari.cognom, count(*) "prestecs"
+              FROM usuari, prestecs
+                RIGHT JOIN cataleg
+                  ON prestecs.idCataleg = cataleg.id
+                RIGHT JOIN llibre
+                  ON llibre.id = cataleg.idLlibre
+              WHERE prestecs.idUsuari = usuari.id
+              GROUP BY prestecs.idUsuari';
+
+    $resultsTitle = mysqli_query($link, $sql1);
+    while ($row1 = $resultsTitle->fetch_array()) {
+        $pdf->SectionTitle('Usuari', $row1['nom'].' '.$row1['cognom'].' ('.$row1['prestecs'].' prestecs)');
+        $sql2 ='SELECT prestecs.idusuari, usuari.nom, usuari.cognom, llibre.id, llibre.titol, count(*) "prestecs"
+                FROM usuari, prestecs
+                  RIGHT JOIN cataleg
+                    ON prestecs.idCataleg = cataleg.id
+                  RIGHT JOIN llibre
+                    ON llibre.id = cataleg.idLlibre
+                WHERE prestecs.idUsuari = usuari.id AND usuari.id = '.$row1['idusuari'].' 
+                GROUP BY prestecs.idUsuari, llibre.id';
+        $resultsSection =  mysqli_query($link, $sql2);
+        while ($row2 = $resultsSection->fetch_array()) {
+            $pdf->SectionBody($row2['titol'].' ('.$row2['prestecs'].')');
+        }
+    }
+
+    $link->close();
 }
 
 function periodReport($pdf) {
