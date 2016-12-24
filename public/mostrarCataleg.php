@@ -68,6 +68,7 @@ echo "</form>";
     <h4>Titol del llibre: <span style="color: red; font-weight: bold" id="titolLlibre"></span> </h4>
 
 </div>
+</div>
 
 <?php include "footer.php"; ?>
 
