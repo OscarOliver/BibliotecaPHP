@@ -12,12 +12,7 @@
     $link = DBConnection::getConnection();
 
     // Comprovar la connexió, si no pot connectar-se donara error
-    if ($link === false) {
-        die("ERROR: No s'ha pogut connectar. " . mysqli_connect_error());
-    }
-    else {
-        echo "<script>console.log( 'Connected successfully.' );</script>";
-    }
+    if ($link === false) die("Die");
 
     $sql = "SELECT * FROM usuari";
 

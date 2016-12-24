@@ -1,5 +1,6 @@
 
 <?php
+require_once ("../src/DBConnection.php");
 require('fpdf.php');
 
 class PDF extends FPDF
@@ -27,7 +28,7 @@ class PDF extends FPDF
     {
         // Position at 1.5 cm from bottom
         $this->SetY(-15);
-        // Arial italic 8
+        // Arial 9
         $this->SetFont('Arial','',9);
         // Text color in gray
         $this->SetTextColor(128);
@@ -35,48 +36,86 @@ class PDF extends FPDF
         $this->Cell(0,10,$this->PageNo().'/{nb}',0,0,'C');
     }
 
-    function ChapterTitle($num, $label)
+    function SectionTitle($label, $title)
     {
-        // Arial 12
-        $this->SetFont('Arial','',12);
-        // Background color
-        $this->SetFillColor(200,220,255);
-        // Title
-        $this->Cell(0,6,"Chapter $num : $label",0,1,'L',true);
         // Line break
-        $this->Ln(4);
+        $this->Ln(8);
+        // Text format
+        $this->SetFont('Arial','',12);
+        $this->SetTextColor(255,48,48);
+        // Background color
+        $this->SetFillColor(220);
+        // Title
+        $this->Cell(0,6,"$label: $title",0,1,'L',true);
+        // Line break
+        $this->Ln(3);
     }
 
-    function ChapterBody($file)
+    function SectionBody($txt)
     {
-        // Read text file
-        $txt = file_get_contents($file);
-        // Times 12
-        $this->SetFont('Times','',12);
+        // Arial 11
+        $this->SetFont('Arial','',11);
+        $this->SetTextColor(0);
         // Output justified text
         $this->MultiCell(0,5,$txt);
         // Line break
-        $this->Ln();
-        // Mention in italics
-        $this->SetFont('','I');
-        $this->Cell(0,5,'(end of excerpt)');
+        $this->Ln(1);
     }
 
-    function PrintChapter($num, $title, $file)
+    function PrintSection($label, $title, $content)
     {
-        $this->AddPage();
-        $this->ChapterTitle($num,$title);
-        $this->ChapterBody($file);
+        $this->SectionTitle($label, $title);
+        $this->SectionBody($content);
     }
 }
 
-$pdf = new PDF();
+
+require_once ("DBConnection.php");
+$link = DBConnection::getConnection();
+
+// Comprovar la connexió, si no pot connectar-se donara error
+if ($link === false) die("Die");
+
+$pdf = new PDF('P', 'mm', 'A4');
 $pdf->AliasNbPages();
 $title = 'Biblioteca Aaron & Oscar';
 $pdf->SetTitle($title);
-$pdf->SetAuthor('Jules Verne');
-$pdf->PrintChapter(1,'A RUNAWAY REEF','../public/index.php');
-$pdf->PrintChapter(2,'THE PROS AND CONS','../public/index.php');
+$pdf->SetAuthor('Aaron Castells & Oscar Oliver');
+$pdf->AddPage();
+
+if ($_POST['reportType'] == 'llibre') {
+    $sql1 = 'SELECT C.idLlibre, L.titol, count(*) "prestecs"
+             FROM cataleg C, prestecs P, llibre L, usuari U
+             WHERE C.id IN (SELECT idCataleg FROM prestecs) AND
+                   C.id = P.idCataleg AND
+                   C.idLlibre = L.id AND
+                   P.idUsuari = U.id
+             GROUP BY C.idLlibre
+             ORDER BY L.titol';
+
+    $resultsTitle = mysqli_query($link, $sql1);
+    while ($row1 = $resultsTitle->fetch_array()) {
+        $pdf->SectionTitle('Llibre', $row1['titol'].' ('.$row1['prestecs'].' prestecs)');
+        $sql2 = 'SELECT C.idLlibre, L.titol ,P.idUsuari , U.Nom, U.cognom, count(*) "prestecs"
+                 FROM cataleg C, prestecs P, llibre L, usuari U
+                 WHERE C.id IN (SELECT idCataleg FROM prestecs) AND
+                       C.id = P.idCataleg AND
+                       C.idLlibre = L.id AND
+                       L.id = '.$row1["idLlibre"].' AND
+                       P.idUsuari = U.id
+                 GROUP BY C.idLlibre, P.idUsuari
+                 ORDER BY U.Nom';
+        $resultsSection =  mysqli_query($link, $sql2);
+        while ($row2 = $resultsSection->fetch_array()) {
+            $pdf->SectionBody($row2['Nom'].' '.$row2['cognom'].' ('.$row2['prestecs'].')');
+        }
+    }
+}
+
+
 $pdf->Output();
+
+$link->close();
+
 ?>
 

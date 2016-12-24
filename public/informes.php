@@ -1,13 +1,14 @@
 <?php include "header.php"; ?>
 
-<div id="reportType">
-    <form name="informe" action="../src/PDF.php" target="_blank">
-        <select>
-            <option>Per llibre</option>
-            <option>Per usuari</option>
-            <option>Per periode</option>
+<div>
+    <form action="../src/PDF.php" target="_blank" method="post" accept-charset="UTF-8">
+        <input list="reportList">
+        <select id="reportLis" name="reportType">
+            <option value="llibre">Per llibre</option>
+            <option value="usuari">Per usuari</option>
+            <option value="periode">Per periode</option>
         </select>
-        <button type="submit">Mostrar informe</button>
+        <button type="submit" style="width: auto">Mostrar informe</button>
     </form>
 </div>
 

@@ -18,7 +18,7 @@ class DBConnection
             echo "ERROR: No s'ha pogut connectar. " . mysqli_connect_error();
         }
         else {
-            echo "<script>console.log( 'Connected successfully.' );</script>";
+            //echo "<script>console.log( 'Connected successfully.' );</script>";
         }
         return $link;
     }
