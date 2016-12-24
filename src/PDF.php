@@ -61,29 +61,17 @@ class PDF extends FPDF
         // Line break
         $this->Ln(1);
     }
-
-    function PrintSection($label, $title, $content)
-    {
-        $this->SectionTitle($label, $title);
-        $this->SectionBody($content);
-    }
 }
 
 
 require_once ("DBConnection.php");
-$link = DBConnection::getConnection();
+
+function booksReport($pdf) {
+    $link = DBConnection::getConnection();
 
 // Comprovar la connexió, si no pot connectar-se donara error
-if ($link === false) die("Die");
+    if ($link === false) die("Die");
 
-$pdf = new PDF('P', 'mm', 'A4');
-$pdf->AliasNbPages();
-$title = 'Biblioteca Aaron & Oscar';
-$pdf->SetTitle($title);
-$pdf->SetAuthor('Aaron Castells & Oscar Oliver');
-$pdf->AddPage();
-
-if ($_POST['reportType'] == 'llibre') {
     $sql1 = 'SELECT C.idLlibre, L.titol, count(*) "prestecs"
              FROM cataleg C, prestecs P, llibre L, usuari U
              WHERE C.id IN (SELECT idCataleg FROM prestecs) AND
@@ -110,12 +98,34 @@ if ($_POST['reportType'] == 'llibre') {
             $pdf->SectionBody($row2['Nom'].' '.$row2['cognom'].' ('.$row2['prestecs'].')');
         }
     }
+
+    $link->close();
+}
+
+function userReport($pdf) {
+
+}
+
+function periodReport($pdf) {
+
 }
 
 
-$pdf->Output();
+$pdf = new PDF('P', 'mm', 'A4');
+$pdf->AliasNbPages();
+$title = 'Biblioteca Aaron & Oscar';
+$pdf->SetTitle($title);
+$pdf->SetAuthor('Aaron Castells & Oscar Oliver');
+$pdf->AddPage();
 
-$link->close();
+if ($_POST['reportType'] == 'llibre')
+    booksReport($pdf);
+elseif ($_POST['reportType'] == 'usuari')
+    userReport($pdf);
+elseif ($_POST['reportType'] == 'periode')
+    periodReport($pdf);
+
+$pdf->Output();
 
 ?>
 
