@@ -11,4 +11,4 @@ $llibre = new Llibre(null, $_POST['idAutor'], $_POST['numEdicio'], $_POST['quant
 
 echo "<script>console.log('Object Llibre created. Attempting to save to DB...')</script>";
 $llibre->guardar();
-header('Location: ../mostrarLlibres.php');
+header('Location: ../mostrarLlibres2.php');

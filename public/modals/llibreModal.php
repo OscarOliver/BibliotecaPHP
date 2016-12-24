@@ -12,9 +12,9 @@
                 require_once "../src/Autor.php";
                 $res = Llibre::resumLlibre();
                 $autorRes = Autor::get();
-                echo "<select title='autors' required>";
+                echo "<select name='idAutor' title='autors' required>";
                 while ($row = $autorRes ->fetch_array()) {
-                    echo "<option>".$row['nom']." ".$row['cognom']."</option>";
+                    echo "<option value='".$row['id']."'>".$row['nom']." ".$row['cognom']."</option>";
                 };
                 echo "</select>";
                 ?>

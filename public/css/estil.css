@@ -2,6 +2,10 @@
     margin:0 auto;
 }
 
+body {
+    font: 0.9em arial, sans-serif;
+}
+
 nav a{
     text-decoration: none;
     display: inline-block;
@@ -22,6 +26,12 @@ header{
     text-align: center;
     width: 100%;
     margin-bottom: 50px;
+}
+
+footer {
+    border-top: 2px solid #FF2F31;
+    margin-top: 30px;
+    padding: 20px 5%;
 }
 
 tr:nth-child(even) td{
@@ -156,7 +166,7 @@ span.psw {
 
 .close:hover,
 .close:focus {
-    color: red;
+    color: #be0000;
     cursor: pointer;
 }
 

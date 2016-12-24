@@ -42,7 +42,7 @@
             $autor = $autor['nom']." ".$autor['cognom'];
             echo "<td>" . $autor . "</td>";
             echo "<td>" . $row['genere'] . "</td>";
-            echo "<td>" . $row['isbn'] . "</td>";
+            echo "<td>" . $row['ISBN'] . "</td>";
             echo "<td>" . $row['editorial'] . "</td>";
             echo "<td>" . $row['numEdicio'] . "</td>";
             echo "<td>" . $row['anyEdicio'] . "</td>";

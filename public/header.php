@@ -13,9 +13,10 @@
     <nav>
         <a href="index.php">Home</a>
         <a href="mostrarCataleg.php">Prestecs i Devolucions</a>
-        <a href="mostrarLlibres.php">Llibres</a>
-        <a href="mostrarLlibres2.php">Llibres2</a>
+        <!--<a href="mostrarLlibres.php">Llibres</a>-->
+        <a href="mostrarLlibres2.php">Llibres</a>
         <a href="mostrarUsuaris.php">Usuaris</a>
         <a href="mostrarAutors.php">Autors</a>
+        <a href="informes.php">Informes</a>
     </nav>
 </header>
