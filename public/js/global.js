@@ -19,3 +19,16 @@ function descripcio(str) {
     }
 
 }
+
+function displayDateRangeForReport(option) {
+    switch (option) {
+        case 0:
+            console.log("case 1");
+        case 1:
+            console.log("case 2");
+            document.getElementById('dateRangePeriodReport').style.display='none'; break;
+        case 2:
+            console.log("case 3");
+            document.getElementById('dateRangePeriodReport').style.display='block'; break;
+    }
+}
