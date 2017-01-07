@@ -21,6 +21,8 @@ body {
     margin:0 auto;
 }
 
+
+
 nav a{
     text-decoration: none;
     display: inline-block;
@@ -55,12 +57,12 @@ footer {
 }
 
 tr:nth-child(even) td{
-    background: #9c1b1b;
+    background: #c4c4c4;
     color: white;
 }
 
 tr:nth-child(odd) td{
-    background: #ff7a64;
+    background: #8f8f8f;
     color: white;
 }
 
@@ -109,10 +111,28 @@ div.catalegBody > div:first-child > table{
     margin:0 auto;
 }
 
+#content{
+ text-align: center;
+    background:#EEEEEE;
+}
 
 /*Header*/
 h1.index{
     text-align: center;
+}
+
+/*index info*/
+.info span{
+    color: #ff2f31;
+}
+
+.info p{
+    display: block;
+    text-align: justify;
+}
+
+.info{
+    display: inline-block;
 }
 
 
