@@ -11,6 +11,7 @@ require_once ("DBConnection.php");
 
 class Usuari
 {
+    private $id;
     private $nom;
     private $cognom;
     private $dni;
@@ -22,9 +23,10 @@ class Usuari
     private $telefon;
     private $dataNaixement;
 
-    function __construct($nom, $cognom, $dni, $direccio, $poblacio, $provincia, $nacionalitat,
+    function __construct($id, $nom, $cognom, $dni, $direccio, $poblacio, $provincia, $nacionalitat,
                          $email, $telefon, $dataNaixement)
     {
+        $this->id = $id;
         $this->nom = $nom;
         $this->cognom = $cognom;
         $this->dni = $dni;
@@ -50,14 +52,22 @@ class Usuari
             echo "<script>console.log( 'Connected successfully.' );</script>";
         }
 
-        $sql = "INSERT INTO usuari VALUES (NULL, '" .
+        if ($this->id == -1) {
+            $sql = "INSERT INTO usuari VALUES (NULL, '" .
                 $this->nom . "', '" . $this->cognom . "', '" . $this->dni . "', '" .
                 $this->dataNaixement . "', '" . $this->telefon . "', '" . $this->email . "', '" .
                 $this->direccio . "', '" . $this->poblacio . "', '" . $this->nacionalitat . "', '" . $this->provincia . "')";
-
+        }
+        else {
+            $sql = "UPDATE usuari
+                SET nom = '$this->nom', cognom = '$this->cognom', dni = '$this->dni', dataNaixement = '$this->dataNaixement',
+                telefon = '$this->telefon', email = '$this->email', direccio = '$this->direccio', poblacio = '$this->poblacio',
+                nacionalitat = '$this->nacionalitat', provincia = '$this->provincia'
+                WHERE id = $this->id";
+        }
 
         if (mysqli_query($link, $sql)) {
-            $msg = "New record created successfully";
+            $msg = "Query executed successfully";
         }
         else {
             $msg = "Error: " . $sql . "\n" . mysqli_error($link);
@@ -86,6 +96,22 @@ class Usuari
     /********************************
      * Getters & Setters
      ********************************/
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return mixed

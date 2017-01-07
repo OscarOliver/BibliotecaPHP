@@ -2,12 +2,6 @@
 
     <div class="usuarisBody">
     <?php
-    /**
-     * Created by PhpStorm.
-     * User: alumne
-     * Date: 14/12/16
-     * Time: 20:45
-     */
     require_once ("../src/DBConnection.php");
     $link = DBConnection::getConnection();
 
@@ -46,6 +40,12 @@
         echo "<td>" . $row['poblacio'] . "</td>";
         echo "<td>" . $row['provincia'] . "</td>";
         echo "<td>" . $row['nacionalitat'] . "</td>";
+        echo "<td>";
+            echo "<form method='POST' target='_self' >";
+                echo "<input type='hidden' name='id' value='$row[id]'>";
+                echo "<button class='editButton' type='submit' value='Editar'>Editar</button>";
+            echo "</form>";
+        echo "</td>";
         echo "</tr>";
     }
     echo "</tbody></table>";
@@ -54,8 +54,19 @@
     ?>
     </div>
 
-    <button onclick="document.getElementById('newUserModal').style.display='block'" style="width:auto;">Afegir usuari</button>
+    <form method="POST" target="_self">
+        <input type='hidden' name='id' value='-1'>
+        <button type='submit' value='Afegir' style="width:auto;">Afegir usuari</button>
+    </form>
 
-<?php include "modals/usuariModal.html"; ?>
+
+
+<?php include "modals/usuariModal2.php"; ?>
+
+<?php
+$id = $_POST['id'];
+if ($id != null)
+    echo "<script>document.getElementById('newUserModal').style.display='block'</script>";
+?>
 
 <?php include "footer.php"; ?>

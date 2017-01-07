@@ -13,6 +13,7 @@
     <nav>
         <a href="index.php">Home</a>
         <a href="mostrarCataleg.php">Prestecs i Devolucions</a>
+        <a href="prestecs.php">Prestecs</a>
         <!--<a href="mostrarLlibres.php">Llibres</a>-->
         <a href="mostrarLlibres2.php">Llibres</a>
         <a href="mostrarUsuaris.php">Usuaris</a>

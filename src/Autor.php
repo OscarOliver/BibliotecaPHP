@@ -10,14 +10,16 @@ require_once ("DBConnection.php");
 
 class Autor
 {
+    private $id;
     private $nom;
     private $cognom;
     private $email;
     private $telefon;
     private $nacionalitat;
 
-    function __construct($nom, $cognom, $telefon, $email, $nacionalitat)
+    function __construct($id, $nom, $cognom, $telefon, $email, $nacionalitat)
     {
+        $this->id = $id;
         $this->nom = $nom;
         $this->cognom = $cognom;
         $this->telefon = $telefon;
@@ -38,14 +40,21 @@ class Autor
             echo "<script>console.log( 'Connected successfully.' );</script>";
         }
 
-        $sql = "INSERT INTO autor VALUES (NULL, '" .
-            $this->nom . "', '" . $this->cognom . "', '" .
-            $this->telefon . "', '" . $this->email . "', '" .
-            $this->nacionalitat . "')";
-
+        if ($this->id == -1) {
+            $sql = "INSERT INTO autor VALUES (NULL, '" .
+                $this->nom . "', '" . $this->cognom . "', '" .
+                $this->telefon . "', '" . $this->email . "', '" .
+                $this->nacionalitat . "')";
+        }
+        else {
+            $sql = "UPDATE autor
+                SET nom = '$this->nom', cognom = '$this->cognom', telefon = '$this->telefon', email = '$this->email',
+                nacionalitat = '$this->nacionalitat'
+                WHERE id = $this->id";
+        }
 
         if (mysqli_query($link, $sql)) {
-            $msg = "New record created successfully";
+            $msg = "Query executed successfully";
         }
         else {
             $msg = "Error: " . $sql . "\n" . mysqli_error($link);
@@ -53,6 +62,22 @@ class Autor
         echo "<script>console.log( '" . $msg . "' );</script>";
 
         $link->close();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**

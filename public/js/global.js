@@ -22,13 +22,20 @@ function descripcio(str) {
 function displayDateRangeForReport(option) {
     switch (option) {
         case 0:
-            console.log("case 1");
         case 1:
-            console.log("case 2");
             document.getElementById('dateRangePeriodReport').style.display='none'; break;
         case 2:
-            console.log("case 3");
             document.getElementById('dateRangePeriodReport').style.display='block'; break;
+    }
+}
+
+function displayUserSelection(option) {
+    switch (option) {
+        case 0:
+        case 2:
+            document.getElementById('seleccionarUsuari').style.display='none'; break;
+        case 1:
+            document.getElementById('seleccionarUsuari').style.display='block'; break;
     }
 }
 
