@@ -41,7 +41,7 @@ class Prestecs
         return $res;
     }
 
-    static function prestar($usuari,$idCataleg){
+    static function prestar($usuari,$idCataleg,$dataDevolucio){
         $link = DBConnection::getConnection();
 
         if ($link === false) {
@@ -50,11 +50,13 @@ class Prestecs
         else {
             echo "<script>console.log( 'Connected successfully.' );</script>";
         }
-        $sql = "INSERT INTO prestecs VALUES (NULL, " .$idCataleg . ", ". $usuari .",NULL,NULL)";
+
+        $sql = "INSERT INTO prestecs VALUES (NULL, " .$idCataleg . ", ". $usuari .",NULL,"."\"". $dataDevolucio ."\"".",NULL)";
         if(mysqli_query($link,$sql)) $msg = "New record created successfully";
         else $msg = "Error: " . $sql . "\n" . mysqli_error($link);
         echo "<script>console.log( '" . $msg . "' );</script>";
         $link->close();
+        return $msg;
     }
 
     static function retornar($idCataleg){
