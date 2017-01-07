@@ -35,18 +35,18 @@
         while ($row = $results->fetch_array()) {
             echo "<tr>";
             echo "<td>" . $row['id'] . "</td>";
-            echo "<td onclick='onClickEdit(this)'>" . $row['titol'] . "</td>";
+            echo "<td>" . $row['titol'] . "</td>";
             $sqlAutor = "SELECT nom, cognom FROM autor WHERE id =".$row['idAutor'];
             $autorResult = mysqli_query($link, $sqlAutor);
             $autor = $autorResult->fetch_array();
             $autor = $autor['nom']." ".$autor['cognom'];
-            echo "<td onclick='onClickEdit(this)'>" . $autor . "</td>";
-            echo "<td onclick='onClickEdit(this)'>" . $row['genere'] . "</td>";
-            echo "<td onclick='onClickEdit(this)'>" . $row['ISBN'] . "</td>";
-            echo "<td onclick='onClickEdit(this)'>" . $row['editorial'] . "</td>";
-            echo "<td onclick='onClickEdit(this)'>" . $row['numEdicio'] . "</td>";
-            echo "<td onclick='onClickEdit(this)'>" . $row['anyEdicio'] . "</td>";
-            echo "<td onclick='onClickEdit(this)'>" . $row['llocPublicacio'] . "</td>";
+            echo "<td>" . $autor . "</td>";
+            echo "<td>" . $row['genere'] . "</td>";
+            echo "<td>" . $row['ISBN'] . "</td>";
+            echo "<td>" . $row['editorial'] . "</td>";
+            echo "<td>" . $row['numEdicio'] . "</td>";
+            echo "<td>" . $row['anyEdicio'] . "</td>";
+            echo "<td>" . $row['llocPublicacio'] . "</td>";
             echo "<td>" . $row['quantitat'] . "</td>";
             echo "</tr>";
         }

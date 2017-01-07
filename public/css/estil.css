@@ -21,6 +21,8 @@ body {
     margin:0 auto;
 }
 
+
+
 nav a{
     text-decoration: none;
     display: inline-block;
@@ -109,10 +111,28 @@ div.catalegBody > div:first-child > table{
     margin:0 auto;
 }
 
+#content{
+ text-align: center;
+    background:#EEEEEE;
+}
 
 /*Header*/
 h1.index{
     text-align: center;
+}
+
+/*index info*/
+.info span{
+    color: #ff2f31;
+}
+
+.info p{
+    display: block;
+    text-align: justify;
+}
+
+.info{
+    display: inline-block;
 }
 
 
