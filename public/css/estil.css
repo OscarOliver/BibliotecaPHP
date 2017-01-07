@@ -55,12 +55,12 @@ footer {
 }
 
 tr:nth-child(even) td{
-    background: #9c1b1b;
+    background: #c4c4c4;
     color: white;
 }
 
 tr:nth-child(odd) td{
-    background: #ff7a64;
+    background: #8f8f8f;
     color: white;
 }
 
