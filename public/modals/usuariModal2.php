@@ -61,7 +61,7 @@
                 echo "
                     <input type='text' name='nom' placeholder='Nom*' value='$row[nom]' required>
                     <br>
-                    <input type='text' name='cognoms' placeholder='Cognoms*' value='$row[cognom]'required>
+                    <input type='text' name='cognoms' placeholder='Cognoms*' value='$row[cognom]' required>
                     <br>
                     <input type='text' name='dni' placeholder='DNI*' value='$row[dni]'>
                     <br>
@@ -89,9 +89,11 @@
                     <br>
                     <input type='date' name='dataNaixement' placeholder='Data naixement' value='$row[dataNaixement]'>
         
-                    <button type='submit'>Guardar canvis</button>
-                ";
+                    <button type='submit'>Guardar canvis</button>";
+
+                $link->close();
             }
+
             ?>
         </div>
 
@@ -104,6 +106,7 @@
 <script>
     // Get the modal
     var modal = document.getElementById('newUserModal');
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {

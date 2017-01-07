@@ -67,7 +67,7 @@ class Llibre
 
         $sql = "SELECT titol,a.nom, genere, ISBN, editorial,numEdicio,llocPublicacio,anyEdicio,quantitat  from llibre JOIN autor a ON a.id = llibre.idAutor ORDER BY titol";
         if ($res = mysqli_query($link, $sql)) {
-            $msg = "New record created successfully";
+            $msg = "Query executed successfully";
         }
         else {
             $msg = "Error: " . $sql . "\n" . mysqli_error($link);
@@ -89,15 +89,24 @@ class Llibre
             echo "<script>console.log( 'Connected successfully.' );</script>";
         }
 
-        $sql = "INSERT INTO llibre VALUES (NULL, '" .
-            $this->idAutor . "', '" . $this->numEdicio . "', '" . $this->quantitat . "', '" .
-            $this->llocPublicacio . "', '" . $this->anyEdicio . "', '" . $this->editorial . "', '" .
-            $this->isbn . "', '" . $this->titol . "', '" . $this->genere . "')";
+        if ($this->id == -1) {
+            $sql = "INSERT INTO llibre VALUES (NULL,
+                '$this->idAutor', '$this->numEdicio', '$this->quantitat',
+                '$this->llocPublicacio', '$this->anyEdicio', '$this->editorial',
+                '$this->isbn', '$this->titol', '$this->genere')";
+        }
+        else {
+            $sql = "UPDATE llibre
+                SET idAutor = '$this->idAutor', numEdicio = '$this->numEdicio', quantitat = '$this->quantitat',
+                llocPublicacio = '$this->llocPublicacio', anyEdicio = '$this->anyEdicio', editorial = '$this->editorial',
+                ISBN = '$this->isbn', titol = '$this->titol', genere = '$this->genere'
+                WHERE id = $this->id";
+        }
 
         echo "<script>console.log( '" . $sql . "' );</script>";
 
         if (mysqli_query($link, $sql)) {
-            $msg = "New record created successfully";
+            $msg = "Query executed successfully";
         }
         else {
             $msg = "Error: " . $sql . "\n" . mysqli_error($link);

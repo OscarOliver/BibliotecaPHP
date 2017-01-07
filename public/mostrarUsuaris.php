@@ -56,7 +56,7 @@
 
     <form method="POST" target="_self">
         <input type='hidden' name='id' value='-1'>
-        <button type='submit' value='Editar' style="width:auto;">Afegir usuari</button>
+        <button type='submit' value='Afegir' style="width:auto;">Afegir usuari</button>
     </form>
 
 
