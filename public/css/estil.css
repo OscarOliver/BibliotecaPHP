@@ -231,7 +231,7 @@ span.psw {
 }
 
 
-#dateRangePeriodReport {
+#dateRangePeriodReport, #seleccionarUsuari {
     display: none;
 }
 

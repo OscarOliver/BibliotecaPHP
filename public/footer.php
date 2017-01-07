@@ -6,5 +6,5 @@
  * Time: 19:36
  */
 
-echo "<footer> Aaron Castells & Oscar Oliver</footer>";
+echo "<footer>Aaron Castells & Oscar Oliver</footer>";
 echo "</body></html>";
