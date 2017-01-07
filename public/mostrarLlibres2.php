@@ -44,8 +44,8 @@
         echo "<td>" . $row['quantitat'] . "</td>";
         echo "<td>";
             echo "<form method='POST' target='_self' >";
-            echo "<input type='hidden' name='id' value='$row[id]'>";
-            echo "<button type='submit' value='Editar'>Editar</button>";
+                echo "<input type='hidden' name='id' value='$row[id]'>";
+                echo "<button class='editButton' ype='submit' value='Editar'>Editar</button>";
             echo "</form>";
         echo "</td>";
         echo "</tr>";

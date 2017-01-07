@@ -43,7 +43,7 @@
         echo "<td>";
             echo "<form method='POST' target='_self' >";
                 echo "<input type='hidden' name='id' value='$row[id]'>";
-                echo "<button type='submit' value='Editar'>Editar</button>";
+                echo "<button class='editButton' type='submit' value='Editar'>Editar</button>";
             echo "</form>";
         echo "</td>";
         echo "</tr>";

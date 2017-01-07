@@ -36,6 +36,12 @@
         echo "<td>" . $row['telefon'] . "</td>";
         echo "<td>" . $row['email'] . "</td>";
         echo "<td>" . $row['nacionalitat'] . "</td>";
+        echo "<td>";
+            echo "<form method='POST' target='_self' >";
+                echo "<input type='hidden' name='id' value='$row[id]'>";
+                echo "<button class='editButton' type='submit' value='Editar'>Editar</button>";
+            echo "</form>";
+        echo "</td>";
         echo "</tr>";
     }
     echo "</tbody></table>";
@@ -44,8 +50,17 @@
     ?>
 </div>
 
-<button onclick="document.getElementById('newAutorModal').style.display='block'" style="width:auto;">Afegir autor</button>
+    <form method="POST" target="_self">
+        <input type='hidden' name='id' value='-1'>
+        <button type='submit' value='Afegir' style="width:auto;">Afegir autor</button>
+    </form>
 
-<?php include "modals/autorModal.html"; ?>
+<?php include "modals/autorModal.php"; ?>
+
+<?php
+$id = $_POST['id'];
+if ($id != null)
+    echo "<script>document.getElementById('newAutorModal').style.display='block'</script>";
+?>
 
 <?php include "footer.php"; ?>

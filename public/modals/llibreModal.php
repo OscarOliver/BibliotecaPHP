@@ -23,13 +23,13 @@
                 echo "</select>";
                 echo "
                     <br>
-                    <input type='text' name='titol' placeholder='Titol * ' required>
+                    <input type='text' name='titol' placeholder='Titol *' required>
                     <br>
-                    <input type='text' name='genere' placeholder='Genere * ' required>
+                    <input type='text' name='genere' placeholder='Genere *' required>
                     <br>
-                    <input type='number' min='1' name='quantitat' placeholder='Quantitat * ' required>
+                    <input type='number' min='1' name='quantitat' placeholder='Quantitat *' required>
                     <br>
-                    <input type='text' name='isbn' placeholder='ISBN * ' required>
+                    <input type='text' name='isbn' placeholder='ISBN *' required>
                     <br>
                     <input type='text' name='editorial' placeholder='Editorial'>
                     <br>

@@ -166,6 +166,11 @@ button {
     background-color: #f44336;
 }
 
+.editButton {
+    padding: 5px;
+    margin: 0;
+}
+
 /* Center the image and position the close button */
 .imgcontainer {
     text-align: center;
