@@ -16,10 +16,10 @@ echo '<div class="desc">
 
 </div>';
 echo "<table id='infoPrestats'>";
-echo "<tr><th>Llibre</th><th>Usuari</th><th>DNI</th><th>Num. Cataleg</th><th>Data de lloguer</th></tr>";
+echo "<tr><th>Llibre</th><th>Usuari</th><th>DNI</th><th>Num. Cataleg</th><th>Data de lloguer</th><th>Data de devolució</th></tr>";
 $resTaula = Prestecs::resumPrestecs();
 while ($row = $resTaula->fetch_array()){
-    echo "<tr><td>".$row['titol']."</td><td>".$row['nom']."</td><td>".$row['dni']."</td><td>".$row['idCataleg']."</td><td>".$row['dataPrestec']."</td></tr>";
+    echo "<tr><td>".$row['titol']."</td><td>".$row['nom']."</td><td>".$row['dni']."</td><td>".$row['idCataleg']."</td><td>".$row['dataPrestec']."</td><td>".$row['dataMaxDevolucio']."</td></tr>";
 }
 echo "</table>";
 $results = Cataleg::get();

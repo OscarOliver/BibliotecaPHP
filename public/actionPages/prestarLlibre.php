@@ -10,19 +10,23 @@ require_once "../../src/Usuari.php";
 require_once "../../src/Cataleg.php";
 require_once "../../src/Prestecs.php";
 
+if ($_POST['idCataleg'] == '') header('Location: ../mostrarCataleg.php');
+
 $id = $_POST['idCataleg'];
 $idLlibre = Cataleg::getLlibre($id);
 
 $idLlibre = $idLlibre['idLlibre'];
 $usuaris = Usuari::getUsuaris();
 $invalidUsers = Prestecs::getUsuarisLimit();
-$dataDevolucio = date('Y-m-d H:i:s', strtotime('+1 month'));
+
 
 /*Llistat de usuaris*/
 echo "<form action='prestarLlibre.php' method='post'>
 <input type='hidden' name='idCataleg' value='" .$id."'>
-<input type='hidden' name='dataDevolucio' value='".$dataDevolucio."'>
+<input type='number' name='dies' min='1' max = '60'>
+
 <input list='usuaris' name='usuari'>
+
 <datalist id='usuaris'>";
 while ($row = $usuaris ->fetch_array()){
     if (array_search($row['id'],$invalidUsers) === false){
@@ -40,7 +44,8 @@ if(sizeof($_POST) > 1){
 
     /*recuperem la data de devolució*/
 
-    $dataDev = $_POST['dataDevolucio'];
+    $dataDev = $_POST['dies'];
+    $dataDev = date('Y-m-d H:i:s', strtotime('+'.$dataDev.' day'));
     /*Realitzem el prestec*/
     echo Prestecs::prestar($usuari,$id,$dataDev);
     header('Location: ../mostrarCataleg.php');

@@ -86,10 +86,18 @@ class Prestecs
         }
 
         $sql = "SELECT idUsuari FROM prestecs WHERE dataDevolucio is NULL GROUP BY idUsuari HAVING count(*) >= 3";
+        $sql2 = "SELECT idUsuari FROM  prestecs WHERE dataDevolucio is NULL AND prestecs.dataMaxDevolucio < current_timestamp";
+
         $res = mysqli_query($link,$sql);
+        $res2 = mysqli_query($link,$sql2);
         $link -> close();
         $arrUsers = array();
         while ($row = $res ->fetch_array()){
+            $id = $row[idUsuari];
+            array_push($arrUsers, $id);
+        }
+
+        while ($row = $res2 -> fetch_array()){
             $id = $row[idUsuari];
             array_push($arrUsers, $id);
         }
@@ -106,7 +114,12 @@ class Prestecs
         else {
             echo "<script>console.log( 'Connected successfully.' );</script>";
         }
-        $sql = "SELECT l.titol, u.nom, u.dni, p.idCataleg,p.dataPrestec from prestecs p JOIN cataleg c on c.id = p.idCataleg JOIN usuari u ON u.id = p.idUsuari JOIN llibre l ON l.id = c.idLlibre WHERE p.dataDevolucio IS NULL";
+        $sql = "SELECT l.titol, u.nom, u.dni, p.idCataleg,p.dataPrestec,p.dataMaxDevolucio 
+                  from prestecs p 
+                      JOIN cataleg c on c.id = p.idCataleg 
+                      JOIN usuari u ON u.id = p.idUsuari 
+                      JOIN llibre l ON l.id = c.idLlibre 
+                  WHERE p.dataDevolucio IS NULL ORDER BY p.dataMaxDevolucio";
         $res =mysqli_query($link,$sql);
         $link->close();
         return $res;
