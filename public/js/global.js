@@ -38,24 +38,3 @@ function displayUserSelection(option) {
             document.getElementById('seleccionarUsuari').style.display='block'; break;
     }
 }
-
-// function onClickEdit(element){
-//     var id = element.parentNode.firstChild.textContent;
-//     var content = element.innerHTML;
-//     element.innerHTML = '';
-//     var input = document.createElement('input');
-//     input.name = 'elementEdit';
-//     input.placeholder = content;
-//     input.required = true;
-//     var inputSubmit = document.createElement('input');
-//     inputSubmit.type = 'submit';
-//     inputSubmit.name = 'elementEdit';
-//     if (element.className == ''){
-//         element.className = 'editing';
-//         editing = true;
-//         element.appendChild(input);
-//         element.appendChild(inputSubmit);
-//         element.onclick = '';
-//     }
-//
-// }

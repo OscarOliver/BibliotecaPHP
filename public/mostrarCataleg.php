@@ -45,7 +45,7 @@ echo "<input list='disponibles' name='idCataleg' placeholder='Escriu el id del c
 echo "<datalist id='disponibles'>";
 for ($x = 0; $x < count($arrPrestar); $x++){
     if(array_search($arrPrestar[$x],$arrTornar) === false){
-        echo '<option value="'.$arrPrestar[$x].'">';
+        echo '<option value="'.$arrPrestar[$x].'"><span></span></option>';
     }
 }
 echo "</datalist>";
@@ -61,7 +61,7 @@ echo "<br />";
 echo "<input list='retornar' name='idCataleg' placeholder='Escriu el id del cataleg' onchange='descripcio(this.value)'>";
 echo "<datalist id='retornar'>";
 for ($x = 0; $x < count($arrTornar); $x++){
-    echo '<option value="'.$arrTornar[$x].'">';
+    echo '<option value="'.$arrTornar[$x].'"><span></span></option>';
 }
 echo "</datalist>";
 echo "</input>";
