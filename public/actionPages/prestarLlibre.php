@@ -1,3 +1,24 @@
+<head>
+    <style>
+        input{
+            padding:10px;
+        }
+        table{
+            padding:40px;
+            background-color: #ff2f31;
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            border-radius: 3px;
+        }
+        input[type=submit]{
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
 <?php
 /**
  * Created by PhpStorm.
