@@ -60,13 +60,13 @@
     </form>
 
 
+<?php include "footer.php"; ?>
 
 <?php include "modals/usuariModal2.php"; ?>
+
 
 <?php
 $id = $_POST['id'];
 if ($id != null)
     echo "<script>document.getElementById('newUserModal').style.display='block'</script>";
 ?>
-
-<?php include "footer.php"; ?>

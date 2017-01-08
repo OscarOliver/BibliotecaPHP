@@ -55,6 +55,8 @@
         <button type='submit' value='Afegir' style="width:auto;">Afegir autor</button>
     </form>
 
+<?php include "footer.php"; ?>
+
 <?php include "modals/autorModal.php"; ?>
 
 <?php
@@ -62,5 +64,3 @@ $id = $_POST['id'];
 if ($id != null)
     echo "<script>document.getElementById('newAutorModal').style.display='block'</script>";
 ?>
-
-<?php include "footer.php"; ?>

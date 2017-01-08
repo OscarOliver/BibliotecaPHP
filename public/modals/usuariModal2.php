@@ -3,7 +3,7 @@
     <form class="modal-content animate" action="actionPages/altaUsuari.php" method="post" accept-charset="UTF-8">
         <div class="imgcontainer">
             <span onclick="document.getElementById('newUserModal').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="img/add-user.png" alt="Avatar" class="avatar">
+            <img src="img/add-user.png" alt="Avatar" class="avatar"/>
         </div>
 
         <div class="container">
